@@ -1,3 +1,5 @@
+use pong_wgpu::run;
+
 fn main() {
-    println!("Hello, world!");
+    pollster::block_on(run());
 }
