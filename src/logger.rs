@@ -53,7 +53,7 @@ impl Logger {
         Logger::log(level, message, LogType::Warning);
     }
     
-    pub fn log_Error(level: LogLevel, message: &str) {
+    pub fn log_error(level: LogLevel, message: &str) {
         Logger::log(level, message, LogType::Error);
     }
 }

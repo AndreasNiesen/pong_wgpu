@@ -23,7 +23,7 @@ pub async fn run() {
             Event::WindowEvent{event, window_id} => {
                 match event {
                     WindowEvent::CloseRequested => {
-                        Logger::log_info(LogLevel::High, "Closing Window due to Button-Press.");
+                        Logger::log_info(LogLevel::High, "Closing Window due to X-Button-Press.");
                         control_flow.set_exit();
                     },
                     WindowEvent::KeyboardInput { input: KeyboardInput { state: ElementState::Pressed, virtual_keycode: Some(VirtualKeyCode::Escape), .. }, .. } => {
