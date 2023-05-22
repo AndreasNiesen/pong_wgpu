@@ -1,14 +1,16 @@
 use std::iter;
-use winit::{window::Window, dpi::PhysicalSize};
+use winit::{ window::Window, dpi::PhysicalSize };
 use crate::logger::*;
+use crate::balls::Ball;
 
 pub struct GameFuncs {
     surface: wgpu::Surface,
     device: wgpu::Device,
     queue: wgpu::Queue,
     config: wgpu::SurfaceConfiguration,
-    size: winit::dpi::PhysicalSize<u32>,
+    size: PhysicalSize<u32>,
     window: Window,
+    balls: Vec<Ball>,
 }
 
 impl GameFuncs {
@@ -71,10 +73,11 @@ impl GameFuncs {
             config,
             size,
             window,
+            balls: Vec::<Ball>::new(),
         };
     }
 
-    pub fn resize(&mut self, new_size: winit::dpi::PhysicalSize<u32>) {
+    pub fn resize(&mut self, new_size: PhysicalSize<u32>) {
         Logger::log_info(LogLevel::High, "\tStart GameFunc::resize");
         
         if new_size.width > 0 && new_size.height > 0 {
@@ -141,9 +144,13 @@ impl GameFuncs {
         return &self.window;
     }
 
-    pub fn size(&self) -> winit::dpi::PhysicalSize<u32> {
+    pub fn size(&self) -> PhysicalSize<u32> {
         return self.size;
     }
 
     pub fn update(&mut self) {}
+
+    pub fn add_ball(&mut self) {
+        self.balls.push(Ball::new(0.5, 0.5, 1.0, 1.0, 2.0, 5.0));
+    }
 }

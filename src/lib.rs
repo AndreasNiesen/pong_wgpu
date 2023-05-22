@@ -1,4 +1,6 @@
 pub mod logger;
+pub mod custom_vec;
+pub mod balls;
 mod game_fun;
 
 use game_fun::GameFuncs;
@@ -35,6 +37,9 @@ pub async fn run() {
                         Logger::log_info(LogLevel::Medium, "Closing Window due to Escape-Press.");
                         control_flow.set_exit();
                     },
+                    WindowEvent::MouseInput { state: ElementState::Pressed, button: MouseButton::Left, .. } => {
+                        game_funcs.add_ball();
+                    }
                     WindowEvent::Resized(physical_size) => {
                         Logger::log_info(LogLevel::High, "Window resized.");
                         game_funcs.resize(physical_size);
