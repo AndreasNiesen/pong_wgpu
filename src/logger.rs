@@ -15,7 +15,7 @@ const PATH: &'static str = "logs";
 pub struct Logger;
 
 impl Logger {
-    const LEVEL: LogLevel = LogLevel::High;  // TODO: Set to Low - High only for debugging purposes
+    const LEVEL: LogLevel = LogLevel::Low;  // TODO: Set to Low - High only for debugging purposes
     const OUTPUT: LogOutput = LogOutput::All;
 
     pub fn log(level: LogLevel, message: &str, typ: LogType) {
